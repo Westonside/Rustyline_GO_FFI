@@ -1,5 +1,4 @@
 mod multiLineState;
-mod Caller;
 
 use std::arch::x86_64::_mm_pause;
 use std::thread::park_timeout;
@@ -8,7 +7,7 @@ use rustyline::{Editor, Result};
 use multiLineState::MultiLineState;
 
 fn main() -> Result<()> {
-    println!("result start {}", Caller::make_sqip("testing").unwrap());
+    // println!("result start {}", reverse("testing").unwrap());
     // park_timeout(1000ms);
     let mut paste: bool = false;
     let mut paste_state = MultiLineState::new();
@@ -19,7 +18,7 @@ fn main() -> Result<()> {
 
         match readline {
             Ok(line) => {
-
+                
                 rl.add_history_entry(line.as_str());
                 if paste {
                     //add the line to the multiline state
